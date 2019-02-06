@@ -1,5 +1,6 @@
 <?php
 $is_auth = rand(0, 1);
+$user_name = 'Алексей'; // укажите здесь ваше имя
 $category = ["Доски и лыжи", "Крепления", "Ботинки", "Одежда", "Инструменты", "Разное"];
 $lots = [
 [
@@ -39,7 +40,7 @@ $lots = [
 "prais" => "5400"
 ],
 ];
-$user_name = ''; // укажите здесь ваше имя
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -63,6 +64,20 @@ $user_name = ''; // укажите здесь ваше имя
                     </form>
                     <a class="main-header__add-lot button" href="pages/add-lot.html">Добавить лот</a>
                     <nav class="user-menu">
+                        <?php if ($is_auth == 1): ?>
+                            <div class="user-menu__logged">
+                            <p>Алексей</p>
+                            </div>
+                            <?php else: ?>
+                              <ul class="user-menu__list">
+                          <li class="user-menu__item">
+                            <a href="#">Регистрация</a>
+                          </li>
+                          <li class="user-menu__item">
+                            <a href="#">Вход</a>
+                          </li>
+                        </ul>
+                        <?php endif; ?>
                         <!-- здесь должен быть PHP код для показа имени пользователя -->
                     </nav>
                 </div>
@@ -73,14 +88,11 @@ $user_name = ''; // укажите здесь ваше имя
                     <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
                     <ul class="promo__list">
                         <!--заполните этот список из массива категорий--><?php
-                        $index = 0;
-                        $num = count($category);
-                        while ( $index < $num): ?>
+                        foreach ($category as $value): ?>
                         <li class="promo__item promo__item--boards">
-                            <a class="promo__link" href="pages/all-lots.html"><?=$category[$index];?></a>
+                            <a class="promo__link" href="pages/all-lots.html"><?=$value;?></a>
                         </li>
-                        <?php $index++; ?>
-                        <?php endwhile; ?>
+                        <?php endforeach; ?>
                        </ul>
                 </section>
                 <section class="lots">
@@ -115,15 +127,12 @@ $user_name = ''; // укажите здесь ваше имя
             <nav class="nav">
                 <ul class="nav__list container">
                     <!--заполните этот список из массива категорий-->
-                    <?php
-                        $index = 0;
-                        $num = count($category);
-                        while ( $index < $num): ?>
+                    <?php foreach ($category as $value):?>
                     <li class="nav__item">
-                        <a href="pages/all-lots.html"><?=$category[$index];?></a>
+                        <a href="pages/all-lots.html"><?=$value;?></a>
                     </li>
-                     <?php $index++; ?>
-                        <?php endwhile; ?>
+
+                        <?php endforeach; ?>
                 </ul>
             </nav>
             <div class="main-footer__bottom container">
