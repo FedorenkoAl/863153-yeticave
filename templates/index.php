@@ -30,7 +30,7 @@
                                         <span class="lot__cost"><?=htmlspecialchars(money($val["prais"]));?></span>
                                     </div>
                                     <div class="lot__timer timer">
-                                        12:23
+                                        <?=$tim;?>
                                     </div>
                                 </div>
                             </div>
