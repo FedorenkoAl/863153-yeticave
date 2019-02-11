@@ -20,4 +20,11 @@ function include_template($name, $data) {
     return $result;
 }
 
-?>
+function time_end($time_current,$ts_midnight) {
+date_default_timezone_set("Europe/Moscow");
+$secs_to_midnight = $ts_midnight - $time_current;
+
+$hours = floor($secs_to_midnight / 3600);
+$minutes = floor(($secs_to_midnight % 3600) / 60);
+return "$hours : $minutes";
+}
