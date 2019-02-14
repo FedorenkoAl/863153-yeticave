@@ -34,7 +34,5 @@ CREATE TABLE user (
   name VARCHAR(64),
   password VARCHAR(128) NOT NULL UNIQUE,
   avatar VARCHAR(128),
-  contak INT,
-  creation_lots INT,
-  user_rate INT
+  contak TINYTEXT
 );
