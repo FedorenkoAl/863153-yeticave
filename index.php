@@ -16,7 +16,7 @@ $lots = [
     'picture' => 'img/lot-2.jpg',
     'category' => $category[0],
     'title' => '2014 Rossignol District Snowboard',
-    'prais' => '159999'
+    'prais' => '15999'
     ],
     [
     'picture' => 'img/lot-3.jpg',
