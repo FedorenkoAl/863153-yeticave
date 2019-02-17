@@ -71,9 +71,10 @@ VALUES
 SELECT name FROM category;
 
 -- Получаем самые новые, открытые лоты
-  SELECT l.name,price,image,r.price,c.name FROM lots l ORDER BY data_end ASC
+  SELECT l.name,l.price,image,r.price,c.name FROM lots l
   JOIN rate r ON rate_lots = l.id
-  JOIN category c ON lots_category = c.id;
+  JOIN category c ON lots_category = c.id
+  ORDER BY data_end  DESC  LIMIT 2;
 
 -- пОЛУЧАЕМ лот по его id И также название категории, к которой принадлежит лот
   SELECT l.id, l.name, c.name FROM lots l
@@ -85,6 +86,7 @@ SELECT name FROM category;
   WHERE name = 'Маска Oakley Canopy';
 
 -- список самых свежих ставок для лота по его идентификатору
-  SELECT l.id,date_create FROM lots l ORDER BY date_create DESC
+  SELECT l.id,date_create FROM lots l
   JOIN rate
-  ON rate_lots = l.id;
+  ON rate_lots = l.id
+  ORDER BY date_create DESC  LIMIT 2;
