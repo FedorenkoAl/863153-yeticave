@@ -76,14 +76,14 @@ SELECT name FROM category;
   JOIN category c ON lots_category = c.id
   ORDER BY data_end  DESC  LIMIT 2;
 
--- пОЛУЧАЕМ лот по его id И также название категории, к которой принадлежит лот
+-- ПОЛУЧАЕМ лот по его id И также название категории, к которой принадлежит лот
   SELECT l.id, l.name, c.name FROM lots l
   JOIN category c
   ON lots_category = c.id;
 
 -- обновить название лота по его идентификатору;
   UPDATE lots SET name = 'Куртка для сноуборда DC Mutiny Charocal'
-  WHERE name = 'Маска Oakley Canopy';
+  WHERE id = 2;
 
 -- список самых свежих ставок для лота по его идентификатору
   SELECT l.id,date_create FROM lots l
