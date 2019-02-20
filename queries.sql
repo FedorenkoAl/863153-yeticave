@@ -103,7 +103,8 @@ VALUES
   LEFT JOIN rate r
   ON r.rate_lots = l.id
   LEFT JOIN user u
-  ON r.rate_user = u.id
+  ON u.id = r.rate_user
   WHERE l.id = 6
   ORDER BY r.date_create DESC LIMIT 5;
+
 
