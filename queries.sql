@@ -105,5 +105,5 @@ VALUES
   LEFT JOIN user u
   ON r.rate_user = u.id
   WHERE l.id = 6
-  ORDER BY r.date_create DESC LIMIT 1;
+  ORDER BY r.date_create DESC LIMIT 5;
 
