@@ -27,14 +27,12 @@ mysqli_set_charset($link, "utf8");
 
     $lots_id = mysqli_fetch_row( $result_id);
 
-    if ($lots_id == null) {
+    if ($lots_id === null) {
         http_response_code(404);
         $content = include_template('404.php', ['error' => '404 Страница не найдена']);
         print($content);
        die();
     }
-
-
 
 $page_lot = include_template ('lot.php',[
     'lots_id' => $lots_id
