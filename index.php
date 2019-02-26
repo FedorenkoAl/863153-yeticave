@@ -24,7 +24,7 @@ mysqli_set_charset($link, "utf8");
                 die();
             }
 
-        $sql_lots = 'SELECT l.name, l.image, c.name cat, l.price FROM lots l
+        $sql_lots = 'SELECT l.id, l.name, l.image, c.name cat, l.price FROM lots l
         JOIN category c ON l.lots_category = c.id';
         $result_lots = mysqli_query($link, $sql_lots);
 
