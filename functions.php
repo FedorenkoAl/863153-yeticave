@@ -28,3 +28,18 @@ function time_end($time_current,$ts_midnight) {
 
     return "$hours : $minutes";
 }
+
+function the_end ($page,$date1,$date2,$date3,$date4,$date5) {
+    if (count($page)) {
+         $page_add = include_template('add.php',[
+        'lots' => $date1,
+         'category' => $date2,
+         'option' =>  $date3,
+         'errors' => $date4,
+         'error' => $date5
+        ]);
+         print($page_add);
+         die();
+    }
+        return $page_add;
+}
