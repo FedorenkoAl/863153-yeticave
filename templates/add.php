@@ -21,16 +21,29 @@
       <input class="main-header__search-btn" type="submit" name="find" value="Найти">
     </form>
     <a class="main-header__add-lot button" href="add-lot.html">Добавить лот</a>
-    <nav class="user-menu">
-      <ul class="user-menu__list">
-        <li class="user-menu__item">
-          <a href="sign-up.html">Регистрация</a>
-        </li>
-        <li class="user-menu__item">
-          <a href="login.html">Вход</a>
-        </li>
-      </ul>
-    </nav>
+    <?php if (!isset($_SESSION['user'])) :?>
+                    <nav class="user-menu">
+                <ul class="user-menu__list">
+                            <li class="user-menu__item">
+                                <a href="/sign-up.php">Регистрация</a>
+                            </li>
+                            <li class="user-menu__item">
+                                <a href="/login.php">Вход</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <?php else: ?>
+                    <nav class="user-menu">
+                <ul class="user-menu__list">
+                            <li class="user-menu__item">
+                                <a href="/sign-up.php"><?=$_SESSION['user']['3'];?></a>
+                            </li>
+                            <li class="user-menu__item">
+                                <a href="/">Выход</a>
+                            </li>
+                        </ul>
+                    </nav>
+                <?php endif; ?>
   </div>
 </header>
 

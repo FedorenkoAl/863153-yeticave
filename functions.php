@@ -1,4 +1,5 @@
 <?php
+session_start();
 function money ($amount){
     return number_format(ceil($amount),0," "," ") . ' ₽';
 }

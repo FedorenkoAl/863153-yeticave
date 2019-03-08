@@ -7,6 +7,12 @@ mysqli_set_charset($link, "utf8");
        print('Ошибка подключения:' . mysqli_connect_error());
        die();
     }
+
+    if (!isset($_SESSION['user'])) {
+        header('Location: /');
+         die();
+    }
+
 $sql = 'SELECT id, name FROM category';
 $result = mysqli_query($link, $sql);
     if ($result) {

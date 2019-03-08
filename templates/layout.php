@@ -19,28 +19,32 @@
                         <input class="main-header__search-btn" type="submit" name="find" value="Найти">
                     </form>
                     <a class="main-header__add-lot button" href="/add.php">Добавить лот</a>
-                    <nav class="user-menu">
-                        <!-- здесь должен быть PHP код для показа имени пользователя -->
-                        <?php if ($is_auth == 1): ?>
-                        <div class="user-menu__logged">
-                            <p>Алексей</p>
-                        </div>
+                        <?php if (!isset($_SESSION['user'])) :?>
+                        <nav class="user-menu">
+                    <ul class="user-menu__list">
+                                <li class="user-menu__item">
+                                    <a href="/sign-up.php">Регистрация</a>
+                                </li>
+                                <li class="user-menu__item">
+                                    <a href="/login.php">Вход</a>
+                                </li>
+                            </ul>
+                        </nav>
                         <?php else: ?>
-                        <ul class="user-menu__list">
-                            <li class="user-menu__item">
-                                <a href="/sign-up.php">Регистрация</a>
-                            </li>
-                            <li class="user-menu__item">
-                                <a href="#">Вход</a>
-                            </li>
-                        </ul>
-                        <?php endif; ?>
-                    </nav>
+                        <nav class="user-menu">
+                    <ul class="user-menu__list">
+                                <li class="user-menu__item">
+                                    <a href="/sign-up.php"><?=$_SESSION['user']['3'];?></a>
+                                </li>
+                                <li class="user-menu__item">
+                                    <a href="/logout.php">Выход</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    <?php endif; ?>
                 </div>
             </header>
             <main class="container">
-
-
 
 <?=$content; ?>
 
@@ -49,7 +53,7 @@
         <footer class="main-footer">
             <nav class="nav">
                 <ul class="nav__list container">
-                    <!--заполните этот список из массива категорий-->
+
                     <?php foreach ($category as $value): ?>
                     <li class="nav__item">
                         <a href="pages/all-lots.html"><?=$value['name'];?></a>
