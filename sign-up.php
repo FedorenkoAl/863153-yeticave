@@ -75,7 +75,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      $result_email = db_get_prepare_stmt($link, $sql,[$date_registration, $email, $name, $password, $contak]);
      $result = mysqli_stmt_execute($result_email);
 
-    if (!isset($_FILES['avatar_img']['name'])) {
+     $filename = $_FILES['avatar_img']['name'];
+
+    if ($filename) {
         $filename = $_FILES['avatar_img']['name'];
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         $tmp_name = $_FILES['avatar_img']['tmp_name'];

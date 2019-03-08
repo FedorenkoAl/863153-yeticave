@@ -42,10 +42,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $error = 'form--invalid';
     the_end($errors, $lots, $category, $cat, $errors, $error);
 
-   if (isset($_FILES['lot_img'])) {
-         $filename = $_FILES['lot_img']['name'];
-     }
-     else {
+    if(!ctype_digit($_POST['lot_rate'])) {
+        $errors['lot_rate'] = 'form__item--invalid';
+        the_end($errors, $lots, $category, $cat, $errors, $error);
+    }
+
+    if(!ctype_digit($_POST['lot_step']))  {
+         $errors['lot_step'] = 'form__item--invalid';
+          the_end($errors, $lots, $category, $cat, $errors, $error);
+    }
+
+     $filename = $_FILES['lot_img']['name'];
+
+    if (!$filename) {
         $errors['lot_img'] = 'form__item--uploaded';
         $page_add = include_template('add.php',[
         'lots' => $lots,
@@ -64,16 +73,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors['file'] = 'Загрузите картинку в формате jpg';
         }
     move_uploaded_file($_FILES['lot_img']['tmp_name'], 'img/' . $filename);
-
-    if(!ctype_digit($_POST['lot_rate'])) {
-        $errors['lot_rate'] = 'form__item--invalid';
-        the_end($errors, $lots, $category, $cat, $errors, $error);
-    }
-
-    if(!ctype_digit($_POST['lot_step']))  {
-         $errors['lot_step'] = 'form__item--invalid';
-          the_end($errors, $lots, $category, $cat, $errors, $error);
-    }
 
     $data_end = $_POST['lot_date'];
     $creation_date = time();
