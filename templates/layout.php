@@ -34,7 +34,7 @@
                         <nav class="user-menu">
                     <ul class="user-menu__list">
                                 <li class="user-menu__item">
-                                    <a href="/sign-up.php"><?=$_SESSION['user']['3'];?></a>
+                                    <a href="/sign-up.php"><?=$_SESSION['user']['2'];?></a>
                                 </li>
                                 <li class="user-menu__item">
                                     <a href="/logout.php">Выход</a>
