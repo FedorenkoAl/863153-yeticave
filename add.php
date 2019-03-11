@@ -9,7 +9,7 @@ mysqli_set_charset($link, "utf8");
     }
 
     if (!isset($_SESSION['user'])) {
-        header('Location: /');
+       http_response_code(403);
          die();
     }
 
