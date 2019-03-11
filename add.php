@@ -15,8 +15,9 @@ mysqli_set_charset($link, "utf8");
 
 $sql = 'SELECT id, name FROM category';
 $result = mysqli_query($link, $sql);
+$category = mysqli_fetch_all(check($result), MYSQLI_ASSOC);
     if ($result) {
-        $category = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
     }
     else {
         $error = mysqli_error($link);

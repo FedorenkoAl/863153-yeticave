@@ -44,3 +44,12 @@ function the_end ($page,$date1,$date2,$date3,$date4,$date5) {
     }
         return $page_add;
 }
+
+function check ($res) {
+    if (!$res) {
+        $error = mysqli_error($link);
+        print('Ошибка MySQL' . $error);
+        die();
+    }
+    return $res;
+}

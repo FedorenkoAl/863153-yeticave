@@ -36,7 +36,7 @@
                     <nav class="user-menu">
                 <ul class="user-menu__list">
                             <li class="user-menu__item">
-                                <a href="/sign-up.php"><?=$_SESSION['user']['2'];?></a>
+                                <a href="/sign-up.php"><?=$_SESSION['user']['name'];?></a>
                             </li>
                             <li class="user-menu__item">
                                 <a href="/logout.php">Выход</a>
@@ -93,7 +93,7 @@
             равнодушным.</p>
         </div>
         <div class="lot-item__right">
-             <?php if (isset($_SESSION['user'])) :?>
+        <?php if (isset($_SESSION['user']) && (time() < strtotime($lots_id[5]))) :?>
           <div class="lot-item__state">
             <div class="lot-item__timer timer">
               10:54
@@ -101,17 +101,17 @@
             <div class="lot-item__cost-state">
               <div class="lot-item__rate">
                 <span class="lot-item__amount">Текущая цена</span>
-                <span class="lot-item__cost"><?=money($lots_id[3]) ;?></span>
+                <span class="lot-item__cost"><?=money($lots_id[2]) ;?></span>
               </div>
               <div class="lot-item__min-cost">
                 Мин. ставка <span>12 000 р</span>
               </div>
             </div>
-            <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post">
-              <p class="lot-item__form-item form__item form__item--invalid">
+            <form class="lot-item__form" action="/lot.php?id=<?=$lot_id;?>" method="post">
+              <p class="lot-item__form-item <?=$error;?>">
                 <label for="cost">Ваша ставка</label>
                 <input id="cost" type="text" name="cost" placeholder="12 000">
-                <span class="form__error">Введите наименование лота</span>
+                <span class="form__error"><?=$error_rate;?></span>
               </p>
               <button type="submit" class="button">Сделать ставку</button>
             </form>

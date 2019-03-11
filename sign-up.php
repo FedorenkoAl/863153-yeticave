@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = mysqli_real_escape_string($link, $_POST['email']);
     $sql = "SELECT id FROM user WHERE email IN ('$email') LIMIT 1";
     $r = mysqli_query($link, $sql);
-    $result = mysqli_num_rows($r);
+    $result = mysqli_num_rows(check($r));
         if ($result) {
             $errors['email'] = 'form__item--invalid';
             $page_sign = include_template('sign-up.php',[

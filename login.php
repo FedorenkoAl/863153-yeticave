@@ -26,7 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
         $page_sign = include_template('login.php',[
-        'POST' => $_POST,
         'error' =>  $error,
         'errors' => $errors,
         'error_email' => $error_email
@@ -41,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "SELECT email, password, name FROM user
      WHERE email IN ('$email')";
     $result = mysqli_query($link, $sql);
-    $result_sql = mysqli_fetch_row($result);
+     $result_sql = mysqli_fetch_assoc(check($result));
         if (!$result_sql) {
             $error_email  = 'Неверный email';
             $errors['email'] = 'form__item--invalid';
@@ -54,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 print($page_sign);
                 die();
         }
-        $pass = $result_sql[1];
+        $pass = $result_sql['password'];
             if (password_verify($password_bad ,$pass)) {
                 $_SESSION['user'] = $result_sql;
 
