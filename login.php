@@ -45,8 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $error_email  = 'Неверный email';
             $errors['email'] = 'form__item--invalid';
                 $page_sign = include_template('login.php',[
-                'POST' => $_POST,
-                'error' =>  $error,
+               'error' =>  $error,
                 'errors' => $errors,
                 'error_email' =>  $error_email
                 ]);
