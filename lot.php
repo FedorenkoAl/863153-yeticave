@@ -71,22 +71,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
          die();
     }
 
-    $sql_rate = "SELECT r.price, l.price l, l.step FROM lots l
-        LEFT JOIN rate r
+    $sql_rate = "SELECT r.price, l.price lot, l.step FROM rate r
+        LEFT JOIN lots l
         ON r.rate_lots = $lot_id
         LEFT JOIN user u
         ON u.id = r.rate_user
         WHERE l.id = $lot_id
         ORDER BY r.date_create DESC LIMIT 1";
     $result_rate = mysqli_query($link, $sql_rate);
-    $rate_max = mysqli_fetch_assoc(check($result_rate));
-        if (!$rate_max['price']){
-            $rate_max['price'] = $rate_max['l'];
+    $rate_id = mysqli_fetch_assoc(check($result_rate));
+        if (!$rate_id['price']){
+            $rate_id['price'] = $rate_id['lot'];
         }
 
     $rate = $_POST['cost'];
-    $rate_max = $rate_max['price'];
-    $step = $rate_max['l'];
+    $rate_max = $rate_id['price'];
+    $step = $rate_id['step'];
+
 
     if (($rate_max + $step) >= $rate) {
         $error = 'form__item form__item--invalid';
